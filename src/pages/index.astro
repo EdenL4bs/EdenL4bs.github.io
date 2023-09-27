@@ -1,0 +1,141 @@
+---
+import { Image } from 'astro:assets';
+import arrowIcon from '../images/arrow.svg';
+import githubImg from '../images/github.svg';
+import logo from '../images/logo.svg';
+import mysqlImg from '../images/mysql.png';
+import reactImg from '../images/react.png';
+import solidityImg from '../images/solidity.png';
+import telegramImg from '../images/telegram.svg';
+import twitterImg from '../images/twitter.svg';
+import typescriptImg from '../images/typescript.png';
+
+const services = [
+  {
+    title: 'Decentralized Finance',
+    detail: 'Building DeFi protocols and integrations.',
+    img: 'bg-banner1',
+  },
+  { title: 'NFTs', detail: 'Creating virtual assets on-chain.', img: 'bg-banner2' },
+  {
+    title: 'Smart Contract Development',
+    detail: 'End-to-end design and engineering.',
+    img: 'bg-banner3',
+  },
+  { title: 'Smart Contract Audits', detail: 'Securing your smart contracts.', img: 'bg-banner4' },
+];
+
+const technologies = [
+  { name: 'Solidity', img: solidityImg },
+  { name: 'React', img: reactImg },
+  { name: 'Typescript', img: typescriptImg },
+  { name: 'Mysql', img: mysqlImg },
+];
+
+const links = [
+  { name: 'Telegram', url: 'https://t.me/zueseden', img: telegramImg },
+  { name: 'Twitter', url: 'https://twitter.com/3d3n14bs', img: twitterImg },
+  { name: 'Github', url: 'https://github.com/EdenL4bs', img: githubImg },
+];
+---
+
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Eden Labs</title>
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-body text-body font-body">
+    <header class="px-4 py-8">
+      <nav class="container mx-auto flex items-center justify-between">
+        <a href="/" class="flex items-center gap-x-4">
+          <Image src={logo} alt="Logo" class="h-14 w-14" />
+          <p class="text-3xl tracking-wider">Eden Labs</p>
+        </a>
+      </nav>
+    </header>
+    <main class="px-4">
+      <section class="container mx-auto mb-20">
+        <div
+          class="bg-banner relative flex h-96 w-full flex-col items-center justify-center overflow-hidden rounded-xl bg-center"
+        >
+          <h1
+            class="bg-black mx-4 mb-6 rounded-xl bg-opacity-60 p-4 text-center text-4xl font-semibold tracking-widest"
+          >
+            The best place to build in Web3.
+          </h1>
+          <a
+            href="mailto:3d3n.14bs@gmail.com?subject=Hello Eden!"
+            class="bg-primary flex cursor-pointer items-center gap-x-2 rounded-xl px-8 py-3 text-lg font-medium transition-transform hover:scale-105"
+          >
+            <span>Let's talk</span>
+            <Image src={arrowIcon} alt="Icon" class="h-6 w-6" />
+          </a>
+          <div
+            class="bg-black text-gray-400 absolute bottom-0 left-0 right-0 h-fit bg-opacity-70 py-1 text-center text-sm"
+          >
+            FROM IDEATION TO SCALING, WE HELP TEAMS BUILD AND SHIP FASTER WITH SUPERIOR
+            CRAFTSMANSHIP.
+          </div>
+        </div>
+      </section>
+
+      <section class="container mx-auto mb-20">
+        <h2 class="mb-8 text-center text-3xl">WHAT WE WORK ON</h2>
+        <div class="grid gap-8 sm:grid-cols-2">
+          {
+            services.map(({ title, detail, img }) => (
+              <article class="rounded-lg bg-gray-800 p-4">
+                <h3 class="text-2xl">{title}</h3>
+                <p class="text-gray-400 mb-4">{detail}</p>
+                <div class={`aspect-h-9 aspect-w-16 rounded-lg bg-center ${img}`} />
+              </article>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="container mx-auto mb-20">
+        <h2 class="mb-8 text-center text-3xl">OUR TECH STACK</h2>
+        <div class="grid grid-cols-2 gap-4 rounded-xl border border-gray-800 p-8 sm:grid-cols-4">
+          {
+            technologies.map(({ name, img }) => (
+              <div class="mx-auto w-fit rounded-xl bg-gray-800 p-8">
+                <Image src={img} alt={name} class="h-20 w-20 rounded-xl" />
+              </div>
+            ))
+          }
+        </div>
+      </section>
+    </main>
+    <footer class="p-4">
+      <div
+        class="text-gray-400 container mx-auto flex flex-col-reverse items-center justify-between gap-4 sm:flex-row"
+      >
+        <p>
+          @ {new Date().getFullYear()} Copyrights by Eden Labs. All Rights Reserved.
+        </p>
+        <ul class="flex gap-x-4">
+          {
+            links.map(({ name, url, img }) => (
+              <li>
+                <a href={url} target="_blank">
+                  <Image src={img} alt={name} class="h-8 w-8" />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>
